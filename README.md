@@ -1,6 +1,6 @@
 # LLMunix Starter: Pure Markdown Operating System Template
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 **LLMunix** is a Pure Markdown Operating System that doesn't ship pre-built solutions—it provides the **factory to build them**. This starter template is optimized for Claude Code on the web, enabling dynamic agent creation and self-evolving problem-solving.
 
@@ -316,7 +316,7 @@ Contributions to enhance the **core kernel** are welcome:
 
 ## License
 
-MIT License - see `LICENSE` file for details.
+Apache License 2.0 - see `LICENSE` file for details.
 
 ## Credits
 
