@@ -45,30 +45,33 @@ When you give Claude a goal, it creates exactly the agents needed—nothing more
 
 ## Quick Start
 
-### 1. Use this Template
-Click the "**Use this template**" button at the top of this page and create your own repository.
+### For Public Repositories
 
-### 2. Connect to Claude Code
-- Go to [claude.ai/code](https://claude.ai/code)
-- Connect your GitHub account
-- Authorize Claude for your new repository
+1. **Use this template** → Click "Use this template" and create a public repository
+2. **Connect to Claude Code** → Visit [claude.ai/code](https://claude.ai/code) and authorize GitHub
+3. **Select your repository** → Choose your new repo from the list
+4. **Give Claude a goal** → Start with any ambitious, multi-faceted problem
+5. **Review and merge** → Claude pushes changes to a branch for PR review
 
-### 3. Give Claude a Goal
-Start with any complex, multi-faceted problem. For example:
+### For Private Repositories
 
-> "Develop a quantum computing solution for radiation-free arterial navigation by analyzing pressure wave echoes"
+1. **Use this template** → Create a **private** repository from this template
+2. **Configure GitHub App** → Grant Claude access to your private repositories
+3. **Set environment variables** → Configure secrets and API keys securely
+4. **Optional: Add SessionStart hooks** → Automate dependency installation
+5. **Start your project** → Work on proprietary code in complete isolation
 
-### 4. Watch the System Evolve
-Claude (as SystemAgent) will:
-1. Create `projects/Project_quantum_navigation/` structure
-2. **Dynamically write** agent definitions:
-   - `VisionaryAgent.md` - Strategic conceptualization
-   - `MathematicianAgent.md` - Wave propagation theory
-   - `QuantumEngineerAgent.md` - Qiskit implementation
-3. Orchestrate their execution
-4. Produce deliverables in `output/`
-5. Log everything to `memory/short_term/`
-6. Consolidate learnings to `memory/long_term/`
+### Detailed Setup Guide
+
+For complete step-by-step instructions for both public and private repositories, see **[GETTING_STARTED.md](GETTING_STARTED.md)**.
+
+This guide covers:
+- Setting up public vs private repositories
+- Configuring network access and security
+- Managing environment variables and secrets
+- Installing dependencies with SessionStart hooks
+- Moving sessions between web and local CLI
+- Troubleshooting common issues
 
 ## How It Works: Dynamic Evolution
 
@@ -323,8 +326,10 @@ Built on [Claude Code](https://claude.ai/code) by Anthropic.
 
 ## Links
 
+- **Getting Started Guide**: [GETTING_STARTED.md](GETTING_STARTED.md) - Complete setup for public and private repos
 - **Documentation**: `CLAUDE_CODE_ARCHITECTURE.md`, `system/SmartMemory.md`
 - **Plugin Version**: [LLMunix CLI Plugin](https://github.com/evolving-agents-labs/llmunix-marketplace)
+- **Claude Code Web**: [Official Documentation](https://docs.claude.com/en/docs/claude-code/claude-code-on-the-web)
 - **Claude Code**: [Official Website](https://claude.ai/code)
 
 ---
