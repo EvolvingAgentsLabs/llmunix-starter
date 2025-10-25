@@ -1,232 +1,336 @@
-# LLMunix Starter: A Self-Evolving OS Template
+# LLMunix Starter: Pure Markdown Operating System Template
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**LLMunix** is a Pure Markdown Operating System where AI agents are created dynamically to solve complex problems. This starter template is optimized for Claude Code on the web, providing a "fork-and-run" experience.
+**LLMunix** is a Pure Markdown Operating System that doesn't ship pre-built solutions—it provides the **factory to build them**. This starter template is optimized for Claude Code on the web, enabling dynamic agent creation and self-evolving problem-solving.
 
-## What is LLMunix?
+## Philosophy: The Factory, Not the Products
 
-LLMunix is a revolutionary approach to AI-powered problem solving:
+Traditional AI systems pre-define agents for specific domains (e.g., "Python Developer", "Data Scientist"). This has fundamental limitations:
 
-- **Pure Markdown OS**: Agents, memory, and tools are human-readable markdown files
-- **Dynamic Agent Creation**: The system creates specialized agents on-the-fly for your specific task
-- **Self-Evolving**: Learns from each project and improves over time
-- **Multi-Agent Orchestration**: Complex problems are decomposed and solved by coordinated specialist agents
-- **Version-Controlled Intelligence**: Everything is in Git - agents, memory, learnings
+❌ **Domain coverage is bounded** - Can't handle novel combinations
+❌ **Agents are generic** - Not tailored to specific problem nuances
+❌ **Systems grow bloated** - Shipping hundreds of pre-built agents
+❌ **No learning feedback loop** - Each execution starts from scratch
 
-## Quick Start with Claude Code on the Web (Recommended)
+LLMunix inverts this model:
 
-This template is designed for the web version of Claude Code. Get started in 3 simple steps:
+✅ **Infinite domain coverage** - Creates agents for any expertise needed
+✅ **Problem-specific agents** - Tailored prompts for exact requirements
+✅ **Minimal core** - Only 3 system agents shipped
+✅ **Continuous evolution** - Every project improves future performance
+
+## What You Get
+
+This template contains **only the essential kernel components**:
+
+### Core System Agents (3 only)
+- **SystemAgent** - Master orchestrator for multi-agent coordination
+- **MemoryAnalysisAgent** - Analyzes and interprets memory logs
+- **MemoryConsolidationAgent** - Consolidates short-term memory into long-term learnings
+
+### System Specifications
+- **SmartMemory.md** - Hierarchical memory architecture
+- **Tool definitions** - How LLMunix concepts map to Claude Code tools
+- **Memory managers** - Query and trace management systems
+
+### The Kernel (CLAUDE.md)
+- Auto-loads when you start Claude Code
+- Implements the SystemAgent orchestration workflow
+- Handles dynamic agent creation and execution
+
+**That's it.** No example projects. No domain-specific agents. No bloat.
+
+When you give Claude a goal, it creates exactly the agents needed—nothing more, nothing less.
+
+## Quick Start
 
 ### 1. Use this Template
-Click the "**Use this template**" button at the top of this repository page and select "**Create a new repository**". This will create a copy of `llmunix-starter` in your own GitHub account.
+Click the "**Use this template**" button at the top of this page and create your own repository.
 
 ### 2. Connect to Claude Code
 - Go to [claude.ai/code](https://claude.ai/code)
 - Connect your GitHub account
-- Authorize the Claude GitHub app for the new repository you just created
+- Authorize Claude for your new repository
 
-### 3. Start Your Project
-Select your new repository in the Claude Code interface and give Claude your high-level goal. For example:
+### 3. Give Claude a Goal
+Start with any complex, multi-faceted problem. For example:
 
-> "Create a machine learning pipeline to predict customer churn using the data in `data/customer_data.csv`. The pipeline should include data cleaning, feature engineering, model training with scikit-learn, and evaluation."
+> "Develop a quantum computing solution for radiation-free arterial navigation by analyzing pressure wave echoes"
 
-Claude will:
-1. Read the LLMunix kernel instructions from `CLAUDE.md`
-2. Start working on a new branch
-3. Create a project folder under `projects/`
-4. Dynamically write specialized agent definitions (e.g., `DataEngineerAgent`, `MLEngineerAgent`, `DocumentationAgent`)
-5. Orchestrate these agents to complete your goal
-6. Save all outputs and memory logs to the project folder
+### 4. Watch the System Evolve
+Claude (as SystemAgent) will:
+1. Create `projects/Project_quantum_navigation/` structure
+2. **Dynamically write** agent definitions:
+   - `VisionaryAgent.md` - Strategic conceptualization
+   - `MathematicianAgent.md` - Wave propagation theory
+   - `QuantumEngineerAgent.md` - Qiskit implementation
+3. Orchestrate their execution
+4. Produce deliverables in `output/`
+5. Log everything to `memory/short_term/`
+6. Consolidate learnings to `memory/long_term/`
 
-## Example Use Cases
-
-### Scientific Research
-> "Create a tutorial explaining chaos theory and bifurcation in discrete prey-predator models. Include mathematical foundations, Python simulations, and visualizations."
-
-### Software Development
-> "Build a REST API for a task management system with user authentication, CRUD operations, and PostgreSQL database. Include tests and API documentation."
-
-### Data Analysis
-> "Analyze sales data to identify trends, create visualizations, and generate a comprehensive report with actionable insights."
-
-### Quantum Computing
-> "Design a quantum algorithm for solving the traveling salesman problem. Include the quantum circuit design, implementation in Qiskit, and performance analysis."
-
-## How It Works
-
-### The LLMunix Architecture
-
-```
-llmunix-starter/
-├── CLAUDE.md                 # The kernel/bootloader (auto-read by Claude Code)
-├── .claude/
-│   └── agents/              # Pre-populated system agents
-│       ├── SystemAgent.md
-│       ├── MemoryAnalysisAgent.md
-│       ├── MemoryConsolidationAgent.md
-│       └── ...
-├── system/
-│   ├── agents/              # Source definitions for core agents
-│   ├── tools/               # Tool definitions
-│   └── SmartMemory.md       # Memory system documentation
-├── projects/                # Your projects live here
-│   └── Project_[name]/
-│       ├── components/
-│       │   └── agents/      # Project-specific agents
-│       ├── output/          # Final deliverables
-│       └── memory/
-│           ├── short_term/  # Session logs
-│           └── long_term/   # Consolidated learnings
-└── doc/                     # Documentation and guides
-```
+## How It Works: Dynamic Evolution
 
 ### The Workflow
 
-When you give Claude a goal:
+```
+User Goal
+    ↓
+1. SystemAgent analyzes and decomposes the goal
+    ↓
+2. Creates project structure in projects/[ProjectName]/
+    ↓
+3. WRITES new agent markdown files for required expertise
+    ↓
+4. Reads each agent and invokes via Task tool
+    ↓
+5. Logs all interactions to memory/short_term/
+    ↓
+6. Produces final outputs in output/
+    ↓
+7. Consolidates learnings to memory/long_term/
+    ↓
+8. Future projects query and reuse these learnings
+```
 
-1. **SystemAgent analyzes** your goal and creates a plan
-2. **Dynamic agents are created** - specialized for your specific domain
-3. **Agents collaborate** - each handles their area of expertise
-4. **Everything is logged** - full memory of the process
-5. **Outputs are organized** - in a structured project folder
-6. **System learns** - consolidates insights for future use
+### Agent Creation Example
 
-### Core System Agents
+When you request a machine learning pipeline, LLMunix might create:
 
-LLMunix comes with these pre-configured agents:
+```markdown
+---
+name: FeatureEngineerAgent
+type: specialist
+capabilities:
+  - Feature selection and extraction
+  - Dimensionality reduction
+  - Feature encoding
+tools: [Read, Write, Bash]
+---
 
-- **SystemAgent** - Master orchestrator (the brain)
-- **MemoryAnalysisAgent** - Analyzes logs and extracts patterns
-- **MemoryConsolidationAgent** - Consolidates learnings
-- **VisionaryAgent** - Strategic thinking and conceptualization
-- **MathematicianAgent** - Mathematical modeling
-- **QuantumEngineerAgent** - Quantum computing expertise
+You are an expert feature engineer specializing in...
+[Detailed, project-specific prompt]
+```
 
-You can create unlimited specialized agents for any domain!
+This agent is:
+- **Created at runtime** for this specific project
+- **Tailored** to the exact ML problem domain
+- **Logged** for future reuse
+- **Ephemeral** - only exists if needed
 
-## Advanced Features
+## Example Use Cases
+
+### Quantum Computing Research
+```
+Goal: "Develop a quantum annealing algorithm for supply chain optimization"
+
+Dynamic Agents Created:
+- LogisticsVisionaryAgent.md
+- QuantumAlgorithmDesignerAgent.md
+- QiskitImplementationAgent.md
+- OptimizationValidatorAgent.md
+```
+
+### Full-Stack Development
+```
+Goal: "Build a real-time collaborative whiteboard with WebSocket sync"
+
+Dynamic Agents Created:
+- SystemArchitectAgent.md
+- ReactFrontendAgent.md
+- WebSocketBackendAgent.md
+- DatabaseSchemaAgent.md
+- IntegrationTestAgent.md
+```
+
+### Data Science
+```
+Goal: "Predict customer churn using behavioral analytics"
+
+Dynamic Agents Created:
+- DataExplorationAgent.md
+- FeatureEngineeringAgent.md
+- ModelTrainingAgent.md
+- ResultsVisualizationAgent.md
+```
+
+## Architecture
+
+### Project Structure (Created Dynamically)
+
+```
+llmunix-starter/
+├── .claude/
+│   └── agents/                    # Only 3 core agents
+│       ├── SystemAgent.md
+│       ├── MemoryAnalysisAgent.md
+│       └── MemoryConsolidationAgent.md
+├── system/
+│   ├── agents/                    # Source definitions
+│   ├── tools/                     # Tool specifications
+│   └── SmartMemory.md
+├── projects/                      # Empty - you create these
+│   └── [Created dynamically per goal]
+│       ├── components/
+│       │   └── agents/            # Project-specific agents
+│       ├── output/                # Final deliverables
+│       └── memory/
+│           ├── short_term/        # Interaction logs
+│           └── long_term/         # Consolidated learnings
+├── CLAUDE.md                      # The kernel (auto-loads)
+└── README.md
+```
 
 ### Memory System
 
-LLMunix has a sophisticated memory system:
+**Short-Term Memory (Episodic)**
+- Raw execution traces during project runtime
+- Timestamped logs with full prompts and responses
+- One file per agent interaction
 
-- **Short-term memory**: Detailed logs of every action in a project session
-- **Long-term memory**: Consolidated learnings, patterns, and reusable templates
-- **Memory queries**: Agents can learn from past projects
+**Long-Term Memory (Semantic)**
+- Distilled knowledge for future reuse
+- Agent templates and workflow patterns
+- Domain insights and best practices
 
-### Self-Evolution
-
-After each project, the system:
-1. Analyzes what worked well
-2. Identifies reusable patterns
-3. Stores agent templates for similar future tasks
-4. Continuously improves its problem-solving capabilities
-
-## Alternative Runtimes
-
-### Local CLI Usage (Advanced)
-
-For users who want to run LLMunix locally with the Claude CLI:
-
-```bash
-# Clone your repository
-git clone https://github.com/YOUR_USERNAME/your-llmunix-project.git
-cd your-llmunix-project
-
-# The agents are already pre-populated in .claude/agents/
-# You can start using Claude CLI directly
-claude "Your goal here"
+**Learning Loop**
+```
+Execute → Log → Consolidate → Store → Query → Apply → Execute...
 ```
 
-### Lightweight Qwen Runtime
+Each project makes the system smarter for the next one.
 
-LLMunix also supports a lightweight runtime using Qwen models:
+## Why Pure Markdown?
 
-```bash
-# Install dependencies
-pip install openai
+LLMunix operates entirely through markdown:
 
-# Set up your API key
-export OPENAI_API_KEY=your_key_here
+- **Agent definitions** = Markdown with YAML frontmatter
+- **Memory traces** = Markdown interaction logs
+- **Knowledge base** = Markdown learnings documents
 
-# Run with Qwen
-python qwen_runtime.py "Your goal here"
+Benefits:
+- **Human-readable** - All system state is inspectable
+- **Version-controllable** - Track evolution in Git
+- **Portable** - No binary dependencies or databases
+- **LLM-native** - Claude reads and writes naturally
+
+## Best Practices
+
+### Formulate Clear, Ambitious Goals
+
+❌ Vague: "Help me with some code"
+✅ Clear: "Build a distributed task queue with Redis backend, exponential backoff, and monitoring dashboard"
+
+❌ Too narrow: "Write a function to sort an array"
+✅ Ambitious: "Create a data processing pipeline with streaming ingestion, transformation, and real-time analytics"
+
+### Trust the System
+
+- Don't micromanage which agents to create
+- Let LLMunix decide the optimal decomposition
+- Review the generated agents afterward to learn patterns
+
+### Leverage Learning
+
+After a few projects:
+- Check `memory/long_term/` to see what the system learned
+- Similar future projects will bootstrap faster
+- Agent templates become more refined over time
+
+## Advanced: The Pure Markdown Paradigm
+
+Every component is markdown:
+
+**1. Agent Definition = Executable Prompt**
+```markdown
+---
+name: MyAgent
+capabilities: [...]
+---
+System prompt goes here...
 ```
 
-See `QWEN.md` for detailed instructions.
-
-## Project Structure Best Practices
-
-When LLMunix creates a project, it follows this structure:
-
+**2. Orchestration = Reading & Delegating**
 ```
-projects/Project_your_goal/
-├── components/
-│   └── agents/                    # Agent definitions
-│       ├── DomainExpertAgent.md
-│       └── ImplementationAgent.md
-├── output/                        # Final deliverables
-│   ├── documentation.md
-│   ├── code/
-│   └── results/
-└── memory/
-    ├── short_term/                # Session logs
-    │   ├── 2025-10-25_planning.md
-    │   └── 2025-10-25_execution.md
-    └── long_term/                 # Learnings
-        └── project_learnings.md
+1. Write agent definition
+2. Read agent definition
+3. Pass content to Task tool
 ```
 
-## Example Project: Chaos & Bifurcation Tutorial
-
-This repository includes a complete example project:
-
+**3. Learning = Markdown Analysis**
 ```
-projects/Project_chaos_bifurcation_tutorial_v2/
+MemoryConsolidationAgent reads short_term/*.md
+Extracts patterns → Writes long_term/learnings.md
 ```
 
-Explore it to see:
-- How agents are defined
-- Memory logging structure
-- Output organization
-- The final tutorial and code
+## Comparison: Plugin vs Starter
 
-## Philosophy
+This starter template is the **repository equivalent** of the [LLMunix CLI plugin](https://github.com/evolving-agents-labs/llmunix-marketplace).
 
-LLMunix is built on these principles:
+| Feature | CLI Plugin | Starter Template |
+|---------|------------|------------------|
+| Installation | `/plugin install` | "Use this template" |
+| Activation | `/llmunix "goal"` | Just chat with Claude |
+| Core Agents | 3 only | 3 only |
+| Projects | Dynamic | Dynamic |
+| Learning | Yes | Yes |
+| Best For | Local CLI users | Web users |
 
-1. **Markdown is Code** - Human-readable, version-controllable, LLM-interpretable
-2. **Dynamic over Static** - Create agents for the problem, not the other way around
-3. **Learning by Doing** - The system improves with every project
-4. **Orchestration over Monoliths** - Specialized agents collaborate
-5. **Transparency** - Every decision is logged and auditable
+Both share the same philosophy: **minimal core, infinite extensibility**.
+
+## Troubleshooting
+
+### Issue: Agent creation quality varies
+**Solution:** After a project, review `components/agents/*.md` and manually refine prompts. The next consolidation will store improved templates.
+
+### Issue: Not reusing past learnings
+**Solution:** Use domain-specific keywords in your goal. Check `long_term/` to see what knowledge exists.
+
+### Issue: Too many agents created
+**Solution:** This is actually fine—the system is thorough. Over time, it learns to consolidate similar roles.
+
+## What This Template Does NOT Include
+
+In line with the minimal philosophy:
+- ❌ No example projects
+- ❌ No domain-specific agents
+- ❌ No pre-built solutions
+- ❌ No sample outputs or memory logs
+
+If you want these, you'll create them. That's the point.
 
 ## Contributing
 
-Contributions are welcome! Areas of interest:
+Contributions to enhance the **core kernel** are welcome:
 
-- New system agent templates
-- Runtime implementations for other LLMs
-- Tools and utilities
-- Documentation and examples
+- Core agent prompt improvements
+- System specification enhancements
+- Memory management optimizations
+- Bug reports and fixes
+
+**Do not submit:** Pre-built domain agents or example projects. That defeats the purpose.
 
 ## License
 
 MIT License - see `LICENSE` file for details.
 
-## Architecture Documentation
+## Credits
 
-For deep technical details, see:
-- `CLAUDE_CODE_ARCHITECTURE.md` - How LLMunix integrates with Claude Code
-- `system/SmartMemory.md` - Memory system design
-- `doc/` - Additional guides and documentation
+**Evolving Agents Labs** - Creators of LLMunix
 
-## Support & Community
+Built on [Claude Code](https://claude.ai/code) by Anthropic.
 
-- **Issues**: Report bugs or request features via GitHub Issues
-- **Discussions**: Share your projects and ideas in GitHub Discussions
+## Links
+
+- **Documentation**: `CLAUDE_CODE_ARCHITECTURE.md`, `system/SmartMemory.md`
+- **Plugin Version**: [LLMunix CLI Plugin](https://github.com/evolving-agents-labs/llmunix-marketplace)
+- **Claude Code**: [Official Website](https://claude.ai/code)
 
 ---
 
-**Start building intelligent, self-evolving systems today. Fork this template and let LLMunix orchestrate your next breakthrough.**
+**Start building:**
+
+Give Claude an ambitious, complex goal. Watch it create the perfect team of agents to solve it. Watch those agents become templates for the next goal.
+
+**This is dynamic evolution in action.**

@@ -1,207 +1,199 @@
-# LLMunix Starter Template - Migration Notes
+# LLMunix Starter Template - Clean Version Notes
 
 ## Overview
 
-This repository is the **web-optimized version** of the original LLMunix project, designed specifically for Claude Code on the web with a "fork-and-run" workflow.
+This repository is the **minimal, clean version** of LLMunix inspired by the llmunix-marketplace plugin philosophy. It provides only the essential kernel components, with zero bloat.
 
-## What Changed?
+## Philosophy: The Factory, Not the Products
 
-### 1. Pre-populated `.claude/agents` Directory
+Traditional approach: Ship many pre-built agents for different domains.
 
-**Before (Local CLI Version):**
-- Setup scripts (`setup_agents.sh`, `setup_agents.ps1`) copied agents at runtime
-- `.claude/agents/` was created dynamically on first run
-- Not compatible with Claude Code web (no pre-execution setup)
+**LLMunix approach**: Ship a minimal kernel that creates agents on demand.
 
-**After (Web Template Version):**
-- All system agents pre-copied to `.claude/agents/`
-- Project-specific example agents included with naming prefixes
-- Ready to use immediately when cloned by Claude Code web
-- No setup scripts needed for web usage
+## What's Included (Minimal Core)
 
-**Pre-populated Agents:**
-- System core agents: `SystemAgent.md`, `MemoryAnalysisAgent.md`, `MemoryConsolidationAgent.md`, etc.
-- Project-specific agents: `Project_chaos_bifurcation_tutorial_v2_*.md`
+### Core System Agents (3 only)
+- **SystemAgent.md** - Master orchestrator
+- **MemoryAnalysisAgent.md** - Log analyzer
+- **MemoryConsolidationAgent.md** - Learning consolidator
 
-### 2. New CLAUDE.md Kernel/Bootloader
+### System Files
+- **SmartMemory.md** - Memory architecture specification
+- **Tools/** - Query, trace, and tool mapping definitions
 
-**Before:**
-- `CLAUDE.md` assumed user would run `boot llmunix` command
-- Required manual initialization
+### Kernel
+- **CLAUDE.md** - Auto-loading kernel that embodies SystemAgent
 
-**After:**
-- `CLAUDE.md` is automatically read by Claude Code web on session start
-- Acts as the "kernel" that loads the SystemAgent persona
-- Contains complete workflow instructions for dynamic agent creation
-- No user interaction needed to "boot" the system
+### Structure
+- **projects/** - Empty directory (populated dynamically)
+- **.claude/agents/** - Only the 3 core agents
+- **system/** - Source definitions for reference
 
-### 3. Updated README.md
+## What's NOT Included (Intentionally)
 
-**Before:**
-- Focused on local CLI setup with `setup_agents.sh`
-- Git clone → setup script → manual command workflow
+### ❌ No Domain-Specific Agents
+Removed from both `system/agents/` and `.claude/agents/`:
+- VisionaryAgent.md
+- MathematicianAgent.md
+- QuantumEngineerAgent.md
 
-**After:**
-- Web-first approach: "Use this template" → Connect to Claude Code → Start
-- Clear separation between web usage (primary) and local/Qwen usage (advanced)
-- Emphasis on the "fork-and-run" model
+**Why?** These should be created dynamically based on the specific project requirements. Pre-shipping them:
+1. Biases users toward certain problem-solving patterns
+2. Creates bloat as more domains are added
+3. Prevents true customization to project needs
+4. Defeats the "factory" philosophy
 
-### 4. Removed Files for Web Version
+### ❌ No Example Projects
+Removed entire `projects/` directory contents:
+- Project_aorta
+- Project_chaos_bifurcation_tutorial_v2
+- Project_seismic_surveying
 
-The following files are **not needed** for Claude Code web but are kept in the original project for local/Qwen runtime users:
-- `setup_agents.sh` - Setup script for local CLI
-- `setup_agents.ps1` - Setup script for PowerShell
-- `llmunix-boot` - Boot script for Gemini runtime
+**Why?**
+1. Users should create their own projects dynamically
+2. Examples create false expectations
+3. Takes up repository space
+4. Users learn better by doing
 
-These files have been **excluded** from the starter template as they're incompatible with the web model.
+### ❌ No Alternative Runtimes
+Removed:
+- qwen_runtime.py
+- QWEN.md
+- GEMINI.md
 
-## Architecture Differences
+**Why?** This is the web-optimized version. Alternative runtimes can be documented separately or in a different branch. The focus is on Claude Code web.
 
-### Original (Local CLI Model)
+### ❌ No Scenarios Directory
+Removed `scenarios/` entirely.
+
+**Why?** Usage patterns should emerge from actual use, not prescribed scenarios.
+
+## Comparison: Before vs After Cleanup
+
+### Before (Bloated)
 ```
-1. User clones repository
-2. User runs setup_agents.sh
-3. Script copies agents to .claude/agents/
-4. User runs: claude "llmunix execute: 'goal'"
-5. System processes goal
-```
+.claude/agents/
+├── SystemAgent.md                    ✓ Core
+├── MemoryAnalysisAgent.md            ✓ Core
+├── MemoryConsolidationAgent.md       ✓ Core
+├── VisionaryAgent.md                 ✗ Domain-specific
+├── MathematicianAgent.md             ✗ Domain-specific
+├── QuantumEngineerAgent.md           ✗ Domain-specific
+└── Project_*_*.md                    ✗ Project-specific
 
-### New (Web Template Model)
-```
-1. User clicks "Use this template"
-2. User connects repo to Claude Code web
-3. Claude Code reads CLAUDE.md automatically
-4. User provides goal in chat
-5. System processes goal immediately
-```
+system/agents/
+├── SystemAgent.md                    ✓ Core
+├── MemoryAnalysisAgent.md            ✓ Core
+├── MemoryConsolidationAgent.md       ✓ Core
+├── VisionaryAgent.md                 ✗ Domain-specific
+├── MathematicianAgent.md             ✗ Domain-specific
+└── QuantumEngineerAgent.md           ✗ Domain-specific
 
-## Key Improvements
+projects/
+├── Project_aorta/                    ✗ Example
+├── Project_chaos_bifurcation.../     ✗ Example
+└── Project_seismic_surveying/        ✗ Example
 
-### 1. **Zero Setup Required**
-- No scripts to run
-- No manual agent copying
-- Works out-of-the-box on Claude Code web
-
-### 2. **Version-Controlled Agents**
-- All agents are committed to Git
-- Full transparency and reproducibility
-- Easy to customize before forking
-
-### 3. **Cleaner Separation**
-- Template repo for web users
-- Original repo for local CLI/Qwen users
-- Each optimized for its environment
-
-### 4. **Self-Contained**
-- Everything needed is in the repository
-- No external dependencies for core functionality
-- Example projects demonstrate capabilities
-
-## How to Use This Template
-
-### For Web Users (Recommended)
-1. Click "Use this template" on GitHub
-2. Create your own repository from the template
-3. Connect to Claude Code web
-4. Start working - no setup needed!
-
-### For Local CLI Users (Advanced)
-The agents are already in `.claude/agents/`, so you can:
-```bash
-git clone your-repo
-cd your-repo
-claude "Your goal here"
+Root:
+├── qwen_runtime.py                   ✗ Alternative runtime
+├── QWEN.md                           ✗ Alternative runtime
+├── GEMINI.md                         ✗ Alternative runtime
+└── scenarios/                        ✗ Prescriptive examples
 ```
 
-### For Qwen Runtime Users (Experimental)
-```bash
-git clone your-repo
-cd your-repo
-export OPENAI_API_KEY=your_key
-python qwen_runtime.py "Your goal here"
+### After (Clean)
+```
+.claude/agents/
+├── SystemAgent.md                    ✓ Core only
+├── MemoryAnalysisAgent.md            ✓ Core only
+└── MemoryConsolidationAgent.md       ✓ Core only
+
+system/agents/
+├── SystemAgent.md                    ✓ Core only
+├── MemoryAnalysisAgent.md            ✓ Core only
+└── MemoryConsolidationAgent.md       ✓ Core only
+
+projects/
+└── .gitkeep                          ✓ Empty, ready for dynamic creation
+
+Root: Clean essentials only
 ```
 
-## What Stays the Same
+## Key Changes to Documentation
 
-Despite the migration, the **core philosophy** remains identical:
+### CLAUDE.md
+- **Updated** to clarify only 3 core agents exist
+- **Removed** misleading list of domain agents
+- **Emphasized** dynamic agent creation as the primary workflow
 
-- **Pure Markdown OS**: Agents are markdown files
-- **Dynamic Agent Creation**: System creates specialized agents on-the-fly
-- **Memory & Learning**: Short-term and long-term memory system
-- **Multi-Agent Orchestration**: SystemAgent coordinates specialist agents
-- **Self-Evolution**: Learns from every project
+### README.md
+- **Rewritten** to emphasize "factory not products" philosophy
+- **Added** clear comparison with plugin
+- **Removed** references to example projects and alternative runtimes
+- **Highlighted** what is NOT included (as a feature)
 
-## Directory Structure
+## Philosophy Alignment
 
-```
-llmunix-starter/
-├── .claude/
-│   └── agents/                 # PRE-POPULATED (key difference!)
-│       ├── SystemAgent.md
-│       ├── MemoryAnalysisAgent.md
-│       └── ... (all system agents)
-├── CLAUDE.md                   # NEW: Auto-loading kernel
-├── README.md                   # UPDATED: Web-first guide
-├── system/                     # Source definitions
-│   ├── agents/
-│   ├── tools/
-│   └── SmartMemory.md
-├── projects/                   # Example projects
-│   ├── Project_aorta/
-│   ├── Project_chaos_bifurcation_tutorial_v2/
-│   └── Project_seismic_surveying/
-├── doc/                        # Documentation
-└── scenarios/                  # Usage scenarios
-```
+This cleaned template now perfectly mirrors the llmunix-marketplace plugin:
 
-## Migration Checklist
+| Component | Plugin | Starter (After Cleanup) |
+|-----------|--------|------------------------|
+| Core Agents | 3 | 3 |
+| Domain Agents | 0 (created dynamically) | 0 (created dynamically) |
+| Example Projects | 0 | 0 |
+| System Files | 4 | 4 |
+| Philosophy | Minimal kernel | Minimal kernel |
 
-If you're adapting your own fork of the original LLMunix:
+## Benefits of the Clean Approach
 
-- [x] Create `.claude/agents/` directory
-- [x] Copy all `system/agents/*.md` to `.claude/agents/`
-- [x] Copy project agents with naming prefixes to avoid conflicts
-- [x] Rewrite `CLAUDE.md` as auto-loading kernel
-- [x] Update `README.md` for web-first workflow
-- [x] Remove or move setup scripts
-- [x] Create `.gitignore` for appropriate exclusions
-- [x] Commit everything to Git
-- [x] Enable "Template repository" in GitHub settings
+### 1. **True Dynamic Creation**
+Users are forced to think about what agents they need, not pick from a limited menu.
 
-## Next Steps
+### 2. **Reduced Repository Size**
+From 51 files (22,665 lines) to ~15 core files.
 
-### To Publish Your Template
+### 3. **Clearer Value Proposition**
+"This is a factory" is immediately obvious from the structure.
 
-1. **Push to GitHub:**
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/llmunix-starter.git
-   git branch -M main
-   git push -u origin main
-   ```
+### 4. **Better Learning**
+Users learn by creating their own projects, not copying examples.
 
-2. **Enable Template Setting:**
-   - Go to repository Settings
-   - Check "Template repository"
+### 5. **Easier Maintenance**
+No need to maintain example projects or domain agents that may become outdated.
 
-3. **Test the Template:**
-   - Use the template to create a new repo
-   - Connect it to Claude Code web
-   - Verify it works without setup
+### 6. **Scalability**
+The system can handle any domain without pre-shipping agents for every possibility.
 
-### To Customize
+## Migration Summary
 
-- Add your own system agents to `system/agents/` and `.claude/agents/`
-- Create additional example projects
-- Customize `CLAUDE.md` instructions
-- Add domain-specific tools
+**Removed:**
+- 3 domain-specific agents from system/agents/
+- 3 domain-specific agents from .claude/agents/
+- 3 project-specific agents from .claude/agents/
+- 3 example projects with all contents
+- 3 alternative runtime files
+- 1 scenarios directory
 
-## Support
+**Kept:**
+- 3 core system agents
+- 4 system specification files
+- 1 kernel (CLAUDE.md)
+- Essential documentation
+- License and configuration files
 
-For issues or questions:
-- Original project: `evolvingagentslabs-llmunix`
-- This template: `llmunix-starter`
-- Claude Code docs: https://docs.claude.com/claude-code
+**Result:** A minimal, clean template that embodies the "factory not products" philosophy.
+
+## Usage After Cleanup
+
+1. **Fork/Clone** this template
+2. **Connect** to Claude Code web
+3. **Give a goal** - any complex, multi-faceted problem
+4. **Watch** as Claude dynamically creates the exact agents needed
+5. **Learn** from the generated agent definitions
+6. **Reuse** learnings in future projects through the memory system
+
+No examples needed. No pre-built solutions. Just pure, dynamic agent creation.
 
 ---
 
-**This template represents the evolution of LLMunix from a local-first to a web-first architecture while preserving its powerful core philosophy.**
+**This is LLMunix at its essence: A self-evolving operating system that builds itself to solve your problem.**

@@ -126,13 +126,12 @@ Generate a `project_learnings.md` file in `projects/[ProjectName]/memory/long_te
 
 ## AVAILABLE CORE SYSTEM AGENTS
 
-You have access to these pre-defined system agents:
+You have access to only these **3 pre-defined core agents**:
+- **SystemAgent** - Master orchestrator for multi-agent coordination (your current role)
 - **MemoryAnalysisAgent** - Analyzes memory logs and extracts insights
-- **MemoryConsolidationAgent** - Consolidates learnings for long-term memory
-- **VisionaryAgent** - Strategic thinking and high-level conceptualization
-- **MathematicianAgent** - Mathematical modeling and theoretical analysis
-- **QuantumEngineerAgent** - Quantum computing and advanced physics
-- **SystemAgent** - Multi-agent orchestration (your current role)
+- **MemoryConsolidationAgent** - Consolidates short-term memory into long-term learnings
+
+**All other agents must be created dynamically** based on the specific project requirements. Do not assume any domain-specific agents (like VisionaryAgent, MathematicianAgent, etc.) exist - you must create them as needed.
 
 ## KEY PRINCIPLES
 
