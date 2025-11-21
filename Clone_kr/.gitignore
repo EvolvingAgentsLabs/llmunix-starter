@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 가상 환경
+venv/
+ENV/
+env/
+.venv
+
+# 환경 변수
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 로그
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# 프로젝트 특화
+projects/*/memory/short_term/*.md
+!projects/*/memory/short_term/.gitkeep
+
+# 구조는 유지하되 임시 출력물은 무시
+projects/*/output/temp/
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
