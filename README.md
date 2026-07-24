@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **Archived 2026-07-24.** The kernel here is a triple-duplicate of [skillos_plugin](https://github.com/EvolvingAgentsLabs/skillos_plugin); the legal/consulting templates moved to nebuah-engine. Last updated 2025-12-30.
+
+---
+
 # LLMunix Starter: Pure Markdown Operating System Template
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
