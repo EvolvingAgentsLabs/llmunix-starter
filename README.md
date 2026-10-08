@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> **Archived 2026-07-24.** The kernel here is a triple-duplicate of [skillos_plugin](https://github.com/EvolvingAgentsLabs/skillos_plugin); the legal/consulting templates moved to nebuah-engine. Last updated 2025-12-30.
+> **Archived 2026-07-24.** The kernel here is a triple-duplicate of [skillos_plugin](https://github.com/EvolvingAgentsLabs/skillos_plugin); the legal/consulting templates are no longer maintained here. Last updated 2025-12-30.
 
 ---
 
